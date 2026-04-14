@@ -1,5 +1,5 @@
 import numpy as np
-import optimization as opt
+import src.optimization as opt
 
 def calculate_distances_of_cluster_points(data_points, centroid):
     """

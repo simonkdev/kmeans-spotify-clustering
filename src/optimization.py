@@ -1,7 +1,5 @@
 import numpy as np
 
-CLUSTER_COUNT = 5 # Hard-coded for now, will be made dynamic in the future
-INITIALIZATION_ITERATIONS = 10 # Number of times to run the clustering process with new initial values per cluster count. The best result will be kept.
 
 def calculate_distances_to_point(point, centroids):
     """
@@ -75,7 +73,7 @@ def split_into_centroid_matrices(assigned_indices, data_points, centroids):
         centroid_matrices.append(np.zeros((0, data_points.shape[1]))) # Initialize an empty matrix for each centroid
         for j in range(data_points.shape[0]):
             if assigned_indices[j] == i:
-                centroid_matrices[i].append(data_points[j])
+                centroid_matrices[i] = data_points[j]
     
     return centroid_matrices
 
@@ -101,7 +99,10 @@ def calculate_new_centroids(centroid_matrices):
     Returns:
     - An n-D numpy matrix, with each row representing the new coordinates of a centroid.
     """
-    new_centroids = np.zeros((len(centroid_matrices), centroid_matrices[0].shape[1]))
+
+    print(len(centroid_matrices))
+    print(centroid_matrices[0].shape)
+    new_centroids = np.zeros((len(centroid_matrices), 1))
     
     for i in range(len(centroid_matrices)):
         new_centroids[i] = calculate_new_centroid_coordinates(centroid_matrices[i])
