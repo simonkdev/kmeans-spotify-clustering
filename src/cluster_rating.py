@@ -11,10 +11,7 @@ def calculate_distances_of_cluster_points(data_points, centroid):
     - distance_matrix: An n-D numpy matrix, with each row representing a points' distance to the centroid.
     """
 
-    distance_matrix = np.zeros((data_points.shape[0], centroid.shape[1]))
-    for i in range(data_points.shape[0]):
-        data_point = data_points[i]
-        distance_matrix[i] = opt.calculate_distances_to_point(data_point, centroid).flatten()
+    distance_matrix = opt.calculate_distances_to_point(np.reshape(centroid, (1, centroid.shape[0])), data_points)
 
     return distance_matrix
 
@@ -43,8 +40,9 @@ def calculate_mean_variance_to_mean_distance(mean_distance, distance_matrix):
     - variance_to_mean_distance: A float representing the mean variance of the points' distances to
     """
     variances = (distance_matrix - mean_distance) ** 2
+    
     variance_to_mean_distance = np.mean(variances)
-
+    
     return variance_to_mean_distance
 
 def calculate_cluster_rating(data_points, centroid):
@@ -74,7 +72,7 @@ def calculate_iteration_rating(data_points, centroids):
     Returns:
     - iteration_rating: A float representing the rating of the iteration, calculated as the mean of the cluster ratings.
     """
-    assigned_indices = opt.assign_points_to_closest_centroids(data_points, centroids)
+    assigned_indices = opt.assign_points_to_centroids(data_points, centroids)
     cluster_matrices = opt.split_into_centroid_matrices(assigned_indices, data_points, centroids)
     
     cluster_ratings = []
@@ -82,6 +80,8 @@ def calculate_iteration_rating(data_points, centroids):
         cluster_rating = calculate_cluster_rating(cluster_matrices[i], centroids[i])
         cluster_ratings.append(cluster_rating)
 
+    
     iteration_rating = np.sum(cluster_ratings)
+    
 
     return iteration_rating

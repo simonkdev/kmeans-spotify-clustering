@@ -7,6 +7,8 @@ import src.data_preparation as dp
 import src.optimization as opt
 import src.cluster_rating as cr
 
+from tqdm import tqdm
+
 
 FILE_PATH = 'data/data.csv'
 OUTPUT_PATH = 'result/'
@@ -44,6 +46,8 @@ def main():
         np.savetxt(f'{OUTPUT_PATH}centroids/cluster{CLUSTER_COUNT}/iteration_{i}.csv', final_centroids, delimiter=',')
         iteration_ratings.append(iteration_rating)
 
+
+    print(iteration_ratings)
     np.savetxt(f'{OUTPUT_PATH}iteration_ratings/cluster{CLUSTER_COUNT}/iteration_ratings.csv', iteration_ratings, delimiter=',')
 
 main()

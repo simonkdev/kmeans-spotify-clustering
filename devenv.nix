@@ -5,7 +5,13 @@
   inputs,
   ...
 }: {
-  packages = [pkgs.python313Packages.numpy pkgs.python313Packages.matplotlib pkgs.python313Packages.pandas pkgs.git];
+  packages = [
+    pkgs.python313Packages.numpy
+    pkgs.python313Packages.matplotlib
+    pkgs.python313Packages.pandas
+    pkgs.python313Packages.tqdm
+    pkgs.git
+  ];
 
   languages.python.enable = true;
 
