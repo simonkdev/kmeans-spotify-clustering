@@ -6,6 +6,7 @@ import pandas as pd
 import src.data_preparation as dp
 import src.optimization as opt
 import src.cluster_rating as cr
+import src.create_playlists as cpl
 
 from tqdm import tqdm
 
@@ -49,5 +50,7 @@ def main():
 
     print(iteration_ratings)
     np.savetxt(f'{OUTPUT_PATH}iteration_ratings/cluster{CLUSTER_COUNT}/iteration_ratings.csv', iteration_ratings, delimiter=',')
+
+    cpl.playlist_api(data)
 
 main()
