@@ -64,7 +64,7 @@ def create_playlists(data_points, iteration_index=CHOSEN_ITERATION_INDEX):
 
     return playlists
 
-def playlist_api(data_points, iteration_index=CHOSEN_ITERATION_INDEX):
+def playlist_api(data_points, iteration_index=CHOSEN_ITERATION_INDEX, cluster_count=5):
     
     playlists = create_playlists(data_points, iteration_index)
     
