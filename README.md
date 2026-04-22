@@ -113,3 +113,8 @@ kmeans-spotify-clustering/
    devenv shell
    python main.py
    ```
+
+
+This README was concepted by a human and written by the AI chatbot Mistral.
+An AI agent by OpenAI was used for debugging minor mistakes in this project.
+These mistakes did not regard the ML logic, only file and data management. 
