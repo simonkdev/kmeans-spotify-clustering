@@ -38,11 +38,6 @@ The project uses the **[Spotify Songs Dataset](https://www.kaggle.com/datasets/g
 - **Outputs:** Cluster centroids, iteration ratings, and playlists are stored in the `result/` directory.
 
 ---
-**Next Steps:**
-- Proceed to **[K-Means Clustering](#3-k-means-clustering)** or
-- Skip to **[Code Structure](#4-code-structure)**.
-
----
 ### **K-Means Clustering**
 
 #### **Algorithm Overview**
